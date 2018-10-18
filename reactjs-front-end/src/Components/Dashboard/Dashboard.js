@@ -10,7 +10,7 @@ let testData = [
         "contact_id": 1,
         "url": "indeed/apple.com",
         "site_id": 1,
-        "notes": "Junior level programmer with greate benefits",
+        "notes": "Junior level programmer with great benefits",
         "contact": {
             "contact_id": 1,
             "name": "Recruiter Nguyen",
@@ -28,10 +28,7 @@ const Dashboard = props => {
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="navbar-brand" href="#">Dashboard</a>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
