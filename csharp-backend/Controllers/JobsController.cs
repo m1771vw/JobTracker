@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using JobTracker.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace csharp_backend.Controllers
 {
@@ -22,18 +23,23 @@ namespace csharp_backend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            if(_context.Job.ToList().Count == 0 )
-            {
+            if(_context.Jobs.ToList().Count == 0 )
+            { 
                 return NotFound();
             }
-            return Ok(_context.Job.ToList());
+            return Ok(_context.Jobs
+            // .Include(j => j.contact_id)
+            .Include("Contact") //Table Name?
+            .Include("Site")
+                                //    .Include(j => j.site_id)
+                                   .ToList());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Job job = _context.Job.SingleOrDefault(j => j.job_id == id);
+            Job job = _context.Jobs.SingleOrDefault(j => j.job_id == id);
             if(_context == null)
             {
                 return NotFound();
@@ -45,13 +51,13 @@ namespace csharp_backend.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Job job)
         {
-            if(type == null)
+            if(job == null)
             {
                 return BadRequest();
             }
-            _context.Job.Add(job);
+            _context.Jobs.Add(job);
             _context.SaveChanges();
-            return Ok(_context.Job.Where(j => j.job_id == job.job_id).SingleOrDefault());
+            return Ok(_context.Jobs.Where(j => j.job_id == job.job_id).SingleOrDefault());
         }
 
         // PUT api/values/5
@@ -62,7 +68,7 @@ namespace csharp_backend.Controllers
             {
                 return BadRequest();
             }
-            _context.Job.Update(job);
+            _context.Jobs.Update(job);
             _context.SaveChanges();
             return Ok(job);
         }
@@ -71,12 +77,12 @@ namespace csharp_backend.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Job job = _context.Job.Find(id);
+            Job job = _context.Jobs.Find(id);
             if(job == null)
             {
                 return NotFound();
             }
-            _context.Job.Remove(job);
+            _context.Jobs.Remove(job);
             _context.SaveChanges();
             return Ok(job);
         }

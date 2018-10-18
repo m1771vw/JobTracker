@@ -61,7 +61,7 @@ CREATE TABLE "StatusHistory" (
     status_history_id           SERIAL PRIMARY KEY,
     job_id                      integer REFERENCES "Jobs" (job_id),
     date                        TIMESTAMP,
-    status_type_id                 integer REFERENCES "StatusTypes" (status_type_id)
+    status_type_id              integer REFERENCES "StatusTypes" (status_type_id)
 );
 
 INSERT INTO "StatusHistory"(job_id, date, status_type_id)

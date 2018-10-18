@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using JobTracker.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace csharp_backend.Controllers
 {
