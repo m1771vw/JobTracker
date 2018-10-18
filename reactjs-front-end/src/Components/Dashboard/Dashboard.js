@@ -23,9 +23,11 @@ let testData = [
             }
         }
     ]
-    
+
 const Dashboard = props => {
   return (
+
+    
     <table className="table table-striped">
       <thead>
         <tr>
@@ -48,9 +50,9 @@ const Dashboard = props => {
               <td>{item.position}</td>
               <td>{item.company}</td>
               <td>{item.salary}</td>
-              <td>{item.contact}</td>
+              <td>{item.contact.name}</td>
               <td>{item.url}</td>
-              <td>{item.site_id}</td>
+              <td>{item.site.name}</td>
               <td>{item.notes}</td>
               <td><button className="btn btn-danger" onClick={() => {props.deleteUser(index)}} >Delete</button></td> 
             </tr>
