@@ -22,67 +22,63 @@ namespace csharp_backend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            // if(_context.controller.ToList().Count == 0 )
-            // {
-            //     return NotFound();
-            // }
-            // return Ok(_context.controller.ToList());
-            return Ok();
+            if(_context.Job.ToList().Count == 0 )
+            {
+                return NotFound();
+            }
+            return Ok(_context.Job.ToList());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // Type type = _context.GetType.Include().SingleOrDefault(this => this.typeId == id);
-            // if(_context == null)
-            // {
-            //     return NotFound();
-            // }
-            // return Ok(type);
-            return Ok();
+            Job job = _context.Job.SingleOrDefault(j => j.job_id == id);
+            if(_context == null)
+            {
+                return NotFound();
+            }
+            return Ok(job);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Type type)
+        public IActionResult Post([FromBody] Job job)
         {
-            // if(type == null)
-            // {
-            //     return BadRequest();
-            // }
-            // _context.type.Add(type);
-            // _context.SaveChanges();
-            // return Ok(_context.GetType.Where(this => this.id === type.IsDefined).Include().SingleOrDefault());
-            return Ok();
+            if(type == null)
+            {
+                return BadRequest();
+            }
+            _context.Job.Add(job);
+            _context.SaveChanges();
+            return Ok(_context.Job.Where(j => j.job_id == job.job_id).SingleOrDefault());
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Type type)
+        public IActionResult Put(int id, [FromBody] Job job)
         {
-            // if(type == null || type.typeId != id)
-            // {
-            //     return BadRequest();
-            // }
-            // _context.type.Update(type);
-            // _context.SaveChanges();
-            return Ok(type);
+            if(job == null || job.job_id != id)
+            {
+                return BadRequest();
+            }
+            _context.Job.Update(job);
+            _context.SaveChanges();
+            return Ok(job);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            // Customer customer = _context.Customer.Find(id);
-            // if(type == null)
-            // {
-            //     return NotFound();
-            // }
-            // _context.type.Remove(type);
-            // _context.SaveChanges();
-            // return Ok(type);
-            return Ok();
+            Job job = _context.Job.Find(id);
+            if(job == null)
+            {
+                return NotFound();
+            }
+            _context.Job.Remove(job);
+            _context.SaveChanges();
+            return Ok(job);
         }
     }
 }
