@@ -61,9 +61,10 @@ CREATE TABLE "StatusHistory" (
     status_history_id           SERIAL PRIMARY KEY,
     job_id                      integer REFERENCES "Jobs" (job_id),
     date                        TIMESTAMP,
-    status_type                 integer REFERENCES "StatusTypes" (status_type_id)
+    status_type_id                 integer REFERENCES "StatusTypes" (status_type_id)
 );
 
-INSERT INTO "StatusHistory"(job_id, date, status_type)
+INSERT INTO "StatusHistory"(job_id, date, status_type_id)
 VALUES
-(1, '2018/10/18', 1)
+(1, '2018/10/18 12:10:50', 1),
+(1, '2018/10/19 10:05:30', 9);
