@@ -1,13 +1,8 @@
-// uncomment to import your constants into your reducer
-// import {  } from '../constants';
+import { ALL_JOBS } from '../constants';
 
-
-/**
- *    You may define your initialState as any data structure you'd like
- *    I have scaffolded it as an object (common practice) but you may choose to 
- *    do otherwise.
- */
-const initialState = {}
+const initialState = {
+  jobs: []
+}
 
 /**
  *    You will add different action logic here by creating
@@ -15,6 +10,8 @@ const initialState = {}
  */
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ALL_JOBS:
+      return { ...state, jobs: action.payload};
     default:
       return state;
   }

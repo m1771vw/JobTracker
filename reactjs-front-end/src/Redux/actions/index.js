@@ -1,8 +1,8 @@
-// uncomment to import your constants into your actions
-// import {  } from '../constants'
+import { ALL_JOBS } from './constants';
+import axios from 'axios';
 
-/**
- *    Create your action creators here:
- *    > Should return an object with at least a 'type' attribute
- *    > Don't forget to export your functions
- */
+
+export const getAllJobs = () => async dispatch => {
+    let response = await axios.get('http://localhost:5000/api/jobs')
+    dispatch({ type: ALL_JOBS, payload: response.data})
+}
