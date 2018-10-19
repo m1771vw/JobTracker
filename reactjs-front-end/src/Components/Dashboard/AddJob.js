@@ -12,6 +12,47 @@ class AddJob extends Component {
         notes: ""
     }
 
+    onPositionChange = e => {
+        this.setState({
+            position: e.target.value
+        })
+    }
+
+    onCompanyChange = e => {
+        this.setState({
+            company: e.target.value
+        })
+    }
+
+    onSalaryChange = e => {
+        this.setState({
+            salary: e.target.value
+        })
+    }
+
+    onContactChange = e => {
+        this.setState({
+            contact: e.target.value
+        })
+    }
+
+    onUrlChange = e => {
+        this.setState({
+            url: e.target.value
+        })
+    }
+
+    onSiteChange = e => {
+        this.setState({
+            site: e.target.value
+        })
+    }
+
+    onNotesChange = e => {
+        this.setState({
+            notes: e.target.value
+        })
+    }
     render() {
         return (
             <div>
@@ -35,43 +76,43 @@ class AddJob extends Component {
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Position</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="Enter position" id="example-text-input" />
+                        <input class="form-control" type="text" value={this.state.position} onChange={this.onPositionChange} id="example-text-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Company</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="Enter company" id="example-search-input" />
+                        <input class="form-control" type="search" value={this.state.company} onChange={this.onCompanyChange} id="example-search-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Salary</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="Enter Salary" id="example-email-input" />
+                        <input class="form-control" type="text" value={this.state.salary} onChange={this.onSalaryChange} id="example-email-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-tel-input" class="col-2 col-form-label">Contact</label>
                     <div class="col-10">
-                        <input class="form-control" type="tel" value="Enter phone number" id="example-tel-input" />
+                        <input class="form-control" type="tel" value={this.state.contact} onChange={this.onContactChange} id="example-tel-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-url-input" class="col-2 col-form-label">Url</label>
                     <div class="col-10">
-                        <input class="form-control" type="url" value="Enter url" id="example-url-input" />
+                        <input class="form-control" type="url" value={this.state.url} onChange={this.onUrlChange} id="example-url-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-password-input" class="col-2 col-form-label">Site</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="Enter site" id="example-password-input" />
+                        <input class="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-number-input" class="col-2 col-form-label">Notes</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="Enter comments" id="example-number-input" />
+                        <input class="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
                     </div>
                 </div>
                 <button className="btn btn-danger"  >Submit</button></div>
