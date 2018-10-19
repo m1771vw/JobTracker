@@ -53,3 +53,14 @@ export const updateJob = (id, index, body) => dispatch => {
 
         })
 }
+
+export const register = (user) => dispatch => {
+    console.log("USER:", user);
+    axios.post(`http://localhost:5000/api/JobTrackerUser/`, user)
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(err => {
+
+        })
+}

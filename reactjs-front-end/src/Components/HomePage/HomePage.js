@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeNavbar from '../HomeNavbar';
+import { Link } from 'react-router-dom';
 
 import bg from '../../img/hero-banner2.jpg';
 
@@ -15,7 +16,7 @@ class HomePage extends Component {
             <div className="hero-text">
                 <h1>Job Tracker</h1>
                 <p>Track your job progress here!</p>
-                <button style={{color: 'black'}}>Sign Up</button>
+                <Link to='/signup' className='btn btn-small btn-light' style={{color: 'black'}}>Sign Up</Link>
             </div>
             </div>
 

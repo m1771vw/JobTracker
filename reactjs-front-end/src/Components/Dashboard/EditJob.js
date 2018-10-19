@@ -141,7 +141,7 @@ class EditJob extends Component {
 }
 
 const mapStateToProps = state => ({
-    editFields: state.editFields,
+    editFields: state.edtJob,
     editId: state.editId,
     editIndex: state.editIndex
 })

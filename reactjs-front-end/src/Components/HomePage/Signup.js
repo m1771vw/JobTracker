@@ -1,48 +1,74 @@
 import React, { Component } from 'react';
 import HomeNavbar from '../HomeNavbar';
+import { Link } from 'react-router-dom';
+import { register } from '../../Redux/actions/';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
 class Signup extends Component {
+    state = {
+        username:"",
+        password:"",
+        email:"",
+        confirmpassword:"",
+        submitClicked: false
+    }
+    onSubmitClick = (e) => {
+        e.preventDefault();
+        console.log("Submit clicked");
+        let user = {
+            username: "will",
+            password: "123"
+        }
+        this.props.register(user);
+        this.setState({
+            submitClicked: true
+        })
+    }
     render() {
         return (
             <div>
+            { this.state.submitClicked ? <Redirect to='/login'/>
+            :
+            <div>
             <HomeNavbar title="Sign Up"/>
-            <div class="signup-container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="panel panel-login">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <a href="#" id="login-form-link">Login</a>
+            <div className="signup-container">
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
+                        <div className="panel panel-login">
+                            <div className="panel-heading">
+                                <div className="row">
+                                    <div className="col-xs-6">
+                                        <Link to='/login' id="login-form-link">Login</Link>
                                     </div>
-                                    <div class="col-xs-6">
-                                        <a href="#" class="active" id="register-form-link" onClick={this.registerClicked}>Register</a>
+                                    <div className="col-xs-6">
+                                        <a href="#" className="active" id="register-form-link" onClick={this.registerClicked}>Register</a>
                                     </div>
                                 </div>
                                 <hr/>
 					        </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
+                                <div className="panel-body">
+                                    <div className="row">
+                                        <div className="col-lg-12">
                                     
-                                        <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style={{display: "block"}}>
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" />
+                                        <form id="register-form" method="post" role="form" style={{display: "block"}}>
+                                            <div className="form-group">
+                                                <input type="text" name="username" id="username" tabindex="1" className="form-control" placeholder="Username" value="" />
                                             </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" />
+                                            <div className="form-group">
+                                                <input type="email" name="email" id="email" tabindex="1" className="form-control" placeholder="Email Address" value="" />
                                             </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" />
+                                            <div className="form-group">
+                                                <input type="password" name="password" id="password" tabindex="2" className="form-control" placeholder="Password" />
                                             </div>
-                                            <div class="form-group">
-                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" />
+                                            <div className="form-group">
+                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" className="form-control" placeholder="Confirm Password" />
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now" />
+                                            <div className="form-group">
+                                                <div className="row">
+                                                    <div className="col-sm-6 col-sm-offset-3">
+                                                        <input onClick={this.onSubmitClick} type="submit" name="register-submit" id="register-submit" tabindex="4" className="form-control btn btn-register" value="Register Now" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,8 +81,12 @@ class Signup extends Component {
                 </div>
             </div>
             </div>
+            }
+        </div>
         );
     }
 }
-
-export default Signup;
+const mapPropsToDispatch = dispatch => ({
+    register: (user) => { dispatch(register(user))}
+  });
+export default connect(null, mapPropsToDispatch)(Signup);
