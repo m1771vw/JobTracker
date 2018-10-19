@@ -31,7 +31,9 @@ import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
     state = {
-        editClicked: false
+        editClicked: false,
+        historyClicked: false,
+        contactClicked: false
     }
     _deleteJob = (id, index) => {
         console.log("Trying to delete index: ", index);
@@ -42,6 +44,19 @@ class Dashboard extends Component {
         this.props.editJob(id, index);
         this.setState({
             editClicked: true
+        })
+    }
+    _contactClicked = (id) => {
+        this.setState({
+            contactClicked: true,
+            historyClicked:false,
+
+        })
+    }
+    _historyClicked = (id) => {
+        this.setState({
+            historyClicked:true,
+            contactClicked: false
         })
     }
     componentDidMount() {
@@ -81,17 +96,51 @@ class Dashboard extends Component {
                                 <td>{item.position}</td>
                                 <td>{item.company}</td>
                                 <td>{item.salary}</td>
-                                <td>{item.contact.name}</td>
+                                <td onClick={() => this._contactClicked(item.contact.contact_id)}>{item.contact.name}</td>
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
                                 <td>{item.notes}</td>
                                 <td><button className="btn btn-warning" onClick={() => { this._editJob(item.job_id, index) }} >Edit</button></td>
+                                <td><button className="btn btn-info" onClick={() => { this._historyClicked(item.job_id) }} >History</button></td>
                                 <td><button className="btn btn-danger" onClick={() => { this._deleteJob(item.job_id, index) }} >Delete</button></td>
                             </tr>
                         )
                     })}
-                </tbody>
+             </tbody>
             </table>
+            {this.state.contactClicked &&
+                <div>
+                    <h1>CONTACT INFO</h1>
+                    <table className="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>   
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                    </table>
+                </div>
+            
+            }
+            {this.state.historyClicked &&
+                <div>
+                    <h1>HISTORY</h1>
+                    <table className="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                    </table>
+                </div>
+            
+            }
         </div>
     }
         </div>
