@@ -159,6 +159,8 @@ const mapPropsToDispatch = dispatch => ({
   });
 
   const mapStateToProps = state => ({
-    jobs: state.jobs
+    jobs: state.jobs,
+    contact: state.contact,
+    statusHistory: state.statusHistory
   });
 export default connect(mapStateToProps, mapPropsToDispatch)(Dashboard);

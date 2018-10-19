@@ -75,3 +75,29 @@ export const login = (user) => dispatch => {
 
         })
 }
+
+export const getContactById = (id) => dispatch => {
+    console.log("ID:", id);
+    axios.get(`http://localhost:5000/api/contacts/${id}`)
+        .then(res => {
+            console.log(res.data);
+            dispatch({ type: "GET_CONTACT_BY_ID", payload: res.data})
+            
+        })
+        .catch(err => {
+
+        })
+}
+
+export const getStatusHistoryById = (id) => dispatch => {
+    console.log("ID:", id);
+    axios.get(`http://localhost:5000/api/statusHistory/${id}`)
+        .then(res => {
+            console.log(res.data);
+            dispatch({ type: "GET_STATUS_BY_ID", payload: res.data})
+
+        })
+        .catch(err => {
+
+        })
+}

@@ -4,7 +4,9 @@ const initialState = {
   jobs: [],
   editJob: {},
   editIndex: 0,
-  editId: 0
+  editId: 0,
+  contact: {},
+  statusHistory: {}
   // jobs: [{
   //       "job_id": 0,
   //       "position": "",
@@ -63,6 +65,10 @@ const rootReducer = (state = initialState, action) => {
           ...state.jobs.slice(action.index+1)
         ],
       };
+      case "GET_STATUS_BY_ID":
+      return state;
+      case "GET_CONTACT_BY_ID":
+      return state;
     default:
       return state;
   }
