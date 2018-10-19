@@ -13,6 +13,10 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => <Dashboard />}/>
             <Route path='/addjob' render={() => <AddJob/>}/>
+            <Route path='/signup' render={() => <Signup/>}/>
+            <Route path='/login' render={() => <Login/>}/>
+            <Route path='/addjob' render={() => <AddJob/>}/>
+            <Route path='/dashboard' render={() => <Dashboard/>}/>
             {/* <Route path={'/'+selectedPokemon.name} render={() => <SinglePokemon singlePokemon={selectedPokemon}/>}/> */}
           </Switch>
       </div>
