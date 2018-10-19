@@ -112,7 +112,7 @@ class Dashboard extends Component {
                                 <td>{item.company}</td>
                                 <td>{item.salary}</td>
                                 <td onClick={() => this._contactClicked(item.contact.contact_id)}>{item.contact.name}</td>
-                                <td>{item.url}</td>
+                                <td><a href={item.url}>{item.url}</a></td>
                                 <td>{item.site.name}</td>
                                 {/* <td>{jobStatusHistory && jobStatusHistory[jobStatusHistory.length-1].statusType.status_type}</td> */}
                                 <td>{item.notes}</td>
