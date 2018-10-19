@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
+import HomeNavbar from '../HomeNavbar';
+
 import { Redirect } from 'react-router-dom';
 import { logout } from '../../Redux/actions/';
 import { connect } from 'react-redux';
@@ -129,7 +131,7 @@ class Profile extends Component {
                         </div>
                         :
                         <div>
-                        <Navbar title="Job Tracker" />
+                        <HomeNavbar title="Job Tracker" />
                         <h1>YOU ARE NOT AUTHORIZED.PLEASE LOG IN.</h1>
                           </div>
 }

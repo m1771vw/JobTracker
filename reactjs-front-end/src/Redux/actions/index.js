@@ -27,6 +27,7 @@ export const addJob = (job) => dispatch => {
         .catch(err => {
             // console.log("Error: ", err.response.data);
         })
+
 }
 
 export const deleteJob = (id, index) => dispatch => {
