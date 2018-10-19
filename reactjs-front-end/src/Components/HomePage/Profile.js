@@ -14,7 +14,7 @@ class Profile extends Component {
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-box">
                                     <div class="card-title mb-4">
                                         <div class="d-flex justify-content-start">
                                             <div class="image-container">

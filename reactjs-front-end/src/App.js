@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Dashboard from'./Components/Dashboard/Dashboard';
-import AddJob from'./Components/Dashboard/AddJob';
+import Dashboard from './Components/Dashboard/Dashboard';
+import AddJob from './Components/Dashboard/AddJob';
 import { Switch, Route } from 'react-router-dom';
-import Signup from'./Components/HomePage/Signup';
+import Signup from './Components/HomePage/Signup';
 import Login from './Components/HomePage/Login';
 import Profile from './Components/HomePage/Profile';
-import Homepage from './Components/HomePage/Home{age';
+import HomePage from './Components/HomePage/HomePage';
 
 
 import './App.css';
@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>
-<HomePage/>        
-          {/* <Switch>
+        <HomePage />
+        {/* <Switch>
             <Route exact path='/' render={() => <Dashboard />}/>
             <Route path='/addjob' render={() => <AddJob/>}/>
             <Route path='/signup' render={() => <Signup/>}/>
