@@ -3,36 +3,44 @@ import { array } from 'prop-types'
 import { connect } from 'react-redux';
 import { getAllJobs } from '../../Redux/actions/';
 
-let testData = [
-    {
-        "job_id": 1,
-        "position": "Junior programmer",
-        "company": "Apple",
-        "salary": "100,000",
-        "contact_id": 1,
-        "url": "indeed/apple.com",
-        "site_id": 1,
-        "notes": "Junior level programmer with great benefits",
-        "contact": {
-            "contact_id": 1,
-            "name": "Recruiter Nguyen",
-            "email": "recruiterenguyen@yahoo.com",
-            "phone": "714-909-0098"
-        },
-        "site": {
-            "site_id": 1,
-            "name": "Indeed"
-        }
-    }
-]
+// let testData = [
+//     {
+//         "job_id": 1,
+//         "position": "Junior programmer",
+//         "company": "Apple",
+//         "salary": "100,000",
+//         "contact_id": 1,
+//         "url": "indeed/apple.com",
+//         "site_id": 1,
+//         "notes": "Junior level programmer with great benefits",
+//         "contact": {
+//             "contact_id": 1,
+//             "name": "Recruiter Nguyen",
+//             "email": "recruiterenguyen@yahoo.com",
+//             "phone": "714-909-0098"
+//         },
+//         "site": {
+//             "site_id": 1,
+//             "name": "Indeed"
+//         }
+//     }
+// ]
 
 
 class Dashboard extends Component {
+    state = {
+
+    }
     deleteUser = () => {
         this.props.getAllJobs();
     }
+    componentDidMount() {
+        this.fetchAllJobs();
+    }
+    fetchAllJobs = () => {
+        this.props.getAllJobs();
+    }
     render() {
-
     
     return (
         <div>
@@ -68,7 +76,7 @@ class Dashboard extends Component {
                 </thead>
                 <tbody>
                     {/* type: array< object { email, username, password } > */}
-                    {testData.map((item, index) => {
+                    { this.props.jobs.jobs.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{item.job_id}</td>
