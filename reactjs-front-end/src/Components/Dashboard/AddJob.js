@@ -71,7 +71,7 @@ class AddJob extends Component {
     
     render() {
         return (
-            <div>
+            <div style={{margin: "20px"}}>
             { this.state.submitClicked ? <Redirect to='/dashboard'/>
             :
             <div>
