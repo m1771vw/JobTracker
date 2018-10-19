@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
+import { connect } from 'react-redux';
+import { addJob } from '../../Redux/actions/';
 
 class AddJob extends Component {
     state = {
@@ -53,6 +55,19 @@ class AddJob extends Component {
             notes: e.target.value
         })
     }
+    onSubmitClicked = () => {
+        let job = {
+            position: "mid prog",
+            company: "redw",
+            salary: "10000",
+            contact_id: 1,
+            url: "redwood.edu",
+            site_id: 1,
+            notes: "great place code camp"
+        }
+        this.props.addJob(job);
+    }
+    
     render() {
         return (
             <div>
@@ -100,9 +115,13 @@ class AddJob extends Component {
                         <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
                     </div>
                 </div>
-                <button className="btn btn-danger"  >Submit</button></div>
+                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button></div>
         );
     }
 }
 
-export default AddJob;
+const mapPropsToDispatch = dispatch => ({
+    addJob: (job) => { dispatch(addJob(job))}
+});
+
+export default connect(null, mapPropsToDispatch)(AddJob);

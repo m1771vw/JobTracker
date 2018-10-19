@@ -1,4 +1,4 @@
-import { ALL_JOBS } from '../constants';
+import { ALL_JOBS, ADD_JOB } from '../constants';
 
 const initialState = {
   jobs: []
@@ -32,6 +32,8 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_JOBS:
       return { ...state, jobs: action.payload};
+    case ADD_JOB:
+      return state;
     default:
       return state;
   }
