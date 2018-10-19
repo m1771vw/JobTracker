@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types'
 import { connect } from 'react-redux';
-import { getAllJobs } from '../../Redux/actions/';
+import { getAllJobs, deleteJob } from '../../Redux/actions/';
 import Navbar from '../Navbar';
 // let testData = [
 //     {
@@ -31,8 +31,11 @@ class Dashboard extends Component {
     state = {
 
     }
-    deleteUser = () => {
-        this.props.getAllJobs();
+    deleteUser = (id, index) => {
+        console.log("Trying to delete index: ", index);
+        this.props.deleteJob(id, index);
+        // this.fetchAllJobs();
+
     }
     componentDidMount() {
         this.fetchAllJobs();
@@ -40,6 +43,11 @@ class Dashboard extends Component {
     fetchAllJobs = () => {
         this.props.getAllJobs();
     }
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.jobs.count !== this.props.jobs.count) {
+
+    //     }
+    // }
     render() {
     
     return (
@@ -71,7 +79,7 @@ class Dashboard extends Component {
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
                                 <td>{item.notes}</td>
-                                <td><button className="btn btn-danger" onClick={() => { this.deleteUser(index) }} >Delete</button></td>
+                                <td><button className="btn btn-danger" onClick={() => { this.deleteUser(item.job_id, index) }} >Delete</button></td>
                             </tr>
                         )
                     })}
@@ -88,6 +96,7 @@ Dashboard.propTypes = {
 }
 const mapPropsToDispatch = dispatch => ({
     getAllJobs: () => { dispatch(getAllJobs()) },
+    deleteJob: (id, index) => { dispatch(deleteJob(id, index))}
   });
 
   const mapStateToProps = state => ({

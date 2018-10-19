@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../Navbar';
 import { connect } from 'react-redux';
 import { addJob } from '../../Redux/actions/';
+import { Redirect } from 'react-router-dom';
 
 class AddJob extends Component {
     state = {
@@ -11,7 +12,8 @@ class AddJob extends Component {
         contact: "",
         url: "",
         site: "",
-        notes: ""
+        notes: "",
+        submitClicked: false
     }
 
     onPositionChange = e => {
@@ -58,16 +60,23 @@ class AddJob extends Component {
     onSubmitClicked = () => {
         let contact_id = Number(this.state.contact);
         let site_id = Number(this.state.site);
-        let { contact, site, ...newJob } = this.state
+        let { submitClicked, contact, site, ...newJob } = this.state
         let finalJob = { ...newJob, contact_id, site_id }
         this.props.addJob(finalJob);
+        this.setState({
+            submitClicked:true
+        })
+
     }
     
     render() {
         return (
             <div>
+            { this.state.submitClicked ? <Redirect to='/dashboard'/>
+            :
+            <div>
             <Navbar title="Add a Job"/>
-                <div style ={{margin: "20px"}}>
+                {/* <div style ={{margin: "20px"}}> */}
                 <div className="form-group row">
                     <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
                     <div className="col-10">
@@ -110,9 +119,11 @@ class AddJob extends Component {
                         <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
                     </div>
                 </div>
-                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button></div>
+                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button>
                 </div>
-
+            }
+            </div>
+            
         );
     }
 }

@@ -23,7 +23,7 @@ class App extends Component {
             <Route path='/addjob' render={() => <AddJob/>}/>
             <Route path='/dashboard' render={() => <Dashboard/>}/>
             <Route path='/profile' render={() => <Profile/>}/>
-          </Switch>  */}
+          </Switch> 
       </div>
     );
   }
