@@ -1,8 +1,16 @@
-import { ALL_JOBS } from './constants';
+import { ALL_JOBS } from '../constants';
 import axios from 'axios';
 
 
-export const getAllJobs = () => async dispatch => {
-    let response = await axios.get('http://localhost:5000/api/jobs')
-    dispatch({ type: ALL_JOBS, payload: response.data})
+export const getAllJobs = () => dispatch => {
+    axios.get('http://localhost:5000/api/jobs')
+        .then(response => {
+
+            console.log("Response: ", response);
+            dispatch({ type: ALL_JOBS, payload: response.data})
+        })
+        .catch(err => {
+            console.log("Error: ", err);
+        })
+   
 }
