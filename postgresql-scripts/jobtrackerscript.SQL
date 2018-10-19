@@ -69,13 +69,13 @@ VALUES
 (1, '2018/10/18 12:10:50', 1),
 (1, '2018/10/19 10:05:30', 9);
 
-CREATE TABLE "Users" (
+CREATE TABLE "JobTrackerUsers" (
     user_id     SERIAL PRIMARY KEY,
     username    varchar(50),
     password    varchar(5000)
 );
 
-INSERT INTO "Users"(username, password)
+INSERT INTO "JobTrackerUsers"(username, password)
 VALUES
 ('wyang', 'password123'),
 ('dnguyen', 'password123');

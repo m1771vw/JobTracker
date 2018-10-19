@@ -8,6 +8,7 @@ namespace JobTracker.Models
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Site> Sites { get; set; }
+        public DbSet<JobTrackerUser> JobTrackerUsers { get; set; }
 
 
         public DbSet<StatusHistory> StatusHistory { get; set; }
