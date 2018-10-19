@@ -55,7 +55,7 @@ CREATE TABLE "Jobs"(
 
 INSERT INTO "Jobs"(position, company, salary, contact_id, url, site_id, notes)
 VALUES
-('Junior programmer', 'Apple', '100,000', 1, 'indeed/apple.com', 1, 'Junior level programmer with greate benefits');
+('Junior programmer', 'Apple', '100,000', 1, 'indeed/apple.com', 1, 'Junior level programmer with great benefits');
 
 CREATE TABLE "StatusHistory" (
     status_history_id           SERIAL PRIMARY KEY,
@@ -68,3 +68,14 @@ INSERT INTO "StatusHistory"(job_id, date, status_type_id)
 VALUES
 (1, '2018/10/18 12:10:50', 1),
 (1, '2018/10/19 10:05:30', 9);
+
+CREATE TABLE "Users" (
+    user_id     SERIAL PRIMARY KEY,
+    username    varchar(50),
+    password    varchar(5000)
+);
+
+INSERT INTO "Users"(username, password)
+VALUES
+('wyang', 'password123'),
+('dnguyen', 'password123');
