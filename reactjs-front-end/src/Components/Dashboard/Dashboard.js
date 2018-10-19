@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { array } from 'prop-types'
+import { connect } from 'react-redux';
+import { getAllJobs } from '../../Redux/actions/';
 
 let testData = [
     {
@@ -24,24 +26,31 @@ let testData = [
     }
 ]
 
-const Dashboard = props => {
+
+class Dashboard extends Component {
+    deleteUser = () => {
+        this.props.getAllJobs();
+    }
+    render() {
+
+    
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="#">Navbar</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Add a Job</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Add a Job</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Profile</a>
                         </li>
     
                     </ul>
@@ -73,7 +82,7 @@ const Dashboard = props => {
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
                                 <td>{item.notes}</td>
-                                <td><button className="btn btn-danger" onClick={() => { props.deleteUser(index) }} >Delete</button></td>
+                                <td><button className="btn btn-danger" onClick={() => { this.deleteUser(index) }} >Delete</button></td>
                             </tr>
                         )
                     })}
@@ -81,11 +90,18 @@ const Dashboard = props => {
             </table>
         </div>
 
-    );
+                
+);}
 }
 
 Dashboard.propTypes = {
     dashboard: array
 }
+const mapPropsToDispatch = dispatch => ({
+    getAllJobs: () => { dispatch(getAllJobs()) },
+  });
 
-export default Dashboard;
+  const mapStateToProps = state => ({
+    jobs: state
+  });
+export default connect(mapStateToProps, mapPropsToDispatch)(Dashboard);
