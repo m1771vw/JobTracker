@@ -23,67 +23,91 @@ namespace csharp_backend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            // if(_context.controller.ToList().Count == 0 )
-            // {
-            //     return NotFound();
-            // }
-            // return Ok(_context.controller.ToList());
-            return Ok();
+            if(_context.StatusHistory.ToList().Count == 0 )
+            { 
+                return NotFound();
+            }
+            return Ok(_context.StatusHistory
+            // .Include(j => j.contact_id)
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType)
+                                    // .Include("StatusType")  
+                                    // .Include("StatusTypes")
+                                //    .Include(j => j.site_id)
+                                    .ToList());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // Type type = _context.GetType.Include().SingleOrDefault(this => this.typeId == id);
-            // if(_context == null)
-            // {
-            //     return NotFound();
-            // }
-            // return Ok(type);
-            return Ok();
+            StatusHistory statusHistory = _context.StatusHistory
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType).SingleOrDefault(s => s.status_history_id == id);
+            if(statusHistory == null)
+            {
+                return NotFound();
+            }
+            return Ok(statusHistory);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Type type)
+        public IActionResult Post([FromBody] StatusHistory statusHistory)
         {
-            // if(type == null)
-            // {
-            //     return BadRequest();
-            // }
-            // _context.type.Add(type);
-            // _context.SaveChanges();
-            // return Ok(_context.GetType.Where(this => this.id === type.IsDefined).Include().SingleOrDefault());
-            return Ok();
+            if(statusHistory == null)
+            {
+                return BadRequest();
+            }
+            _context.StatusHistory.Add(statusHistory);
+            _context.SaveChanges();
+            return Ok(_context.StatusHistory.Where(s => s.status_history_id == statusHistory.status_history_id)
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType)
+                                    .SingleOrDefault());
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Type type)
+        public IActionResult Put(int id, [FromBody] StatusHistory statusHistory)
         {
-            // if(type == null || type.typeId != id)
-            // {
-            //     return BadRequest();
-            // }
-            // _context.type.Update(type);
-            // _context.SaveChanges();
-            return Ok(type);
+            if(statusHistory == null || statusHistory.status_history_id != id)
+            {
+                return BadRequest();
+            }
+            _context.StatusHistory.Update(statusHistory);
+            _context.SaveChanges();
+            return Ok(_context.StatusHistory.Where(s => s.status_history_id == statusHistory.status_history_id)
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType)
+                                    .SingleOrDefault());
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            // Customer customer = _context.Customer.Find(id);
-            // if(type == null)
-            // {
-            //     return NotFound();
-            // }
-            // _context.type.Remove(type);
-            // _context.SaveChanges();
-            // return Ok(type);
-            return Ok();
+            StatusHistory statusHistory = _context.StatusHistory.Where(s => s.status_history_id == id)
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType)
+                                    .SingleOrDefault();
+            if(statusHistory == null)
+            {
+                return NotFound();
+            }
+            _context.StatusHistory.Remove(statusHistory);
+            _context.SaveChanges();
+            return Ok(statusHistory);
         }
     }
 }

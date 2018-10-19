@@ -10,6 +10,7 @@ namespace JobTracker.Models
         public DbSet<Site> Sites { get; set; }
         public DbSet<JobTrackerUser> JobTrackerUsers { get; set; }
 
+        public DbSet<StatusType> StatusTypes{ get; set; }
 
         public DbSet<StatusHistory> StatusHistory { get; set; }
     }
