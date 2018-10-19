@@ -79,6 +79,9 @@ export const login = (user) => dispatch => {
         })
 }
 
+export const logout = () => dispatch => {
+    dispatch({type: "LOG_OUT"})
+}
 export const getContactById = (id) => dispatch => {
     console.log("ID:", id);
     axios.get(`http://localhost:5000/api/contacts/${id}`)

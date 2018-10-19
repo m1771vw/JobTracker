@@ -82,6 +82,12 @@ const rootReducer = (state = initialState, action) => {
           userToken: action.payload,
           authorized: true
         }
+        case "LOG_OUT":
+        return {
+          ...state,
+          userToken: "",
+          authorized: false
+        }
     default:
       return state;
   }
