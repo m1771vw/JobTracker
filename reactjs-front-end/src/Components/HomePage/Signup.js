@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 class Signup extends Component {
 
+
+
     render() {
         return (
             <div class="container">
@@ -12,10 +14,10 @@ class Signup extends Component {
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <a href="#" class="active" id="login-form-link">Login</a>
+                                        <a href="#" id="login-form-link">Login</a>
                                     </div>
                                     <div class="col-xs-6">
-                                        <a href="#" id="register-form-link">Register</a>
+                                        <a href="#" class="active" id="register-form-link" onClick={this.registerClicked}>Register</a>
                                     </div>
                                 </div>
                                 <hr/>
@@ -23,7 +25,7 @@ class Signup extends Component {
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                        <form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style={{display: "block"}} >
+                                        {/* <form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style={{display: "block"}} >
                                             <div class="form-group">
                                                 <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" />
                                             </div>
@@ -50,8 +52,8 @@ class Signup extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-								        </form>
-                                        <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style={{display: "none"}}>
+								        </form> */}
+                                        <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style={{display: "block"}}>
                                             <div class="form-group">
                                                 <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" />
                                             </div>
