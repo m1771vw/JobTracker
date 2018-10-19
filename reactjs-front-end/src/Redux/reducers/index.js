@@ -66,9 +66,14 @@ const rootReducer = (state = initialState, action) => {
         ],
       };
       case "GET_STATUS_BY_ID":
-      return state;
+      return {...state, 
+        statusHistory: action.payload
+      };
       case "GET_CONTACT_BY_ID":
-      return state;
+      return {
+        ...state,
+        contact: action.payload
+      };
     default:
       return state;
   }

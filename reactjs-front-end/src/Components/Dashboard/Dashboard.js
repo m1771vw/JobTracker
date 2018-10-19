@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types'
 import { connect } from 'react-redux';
-import { getAllJobs, deleteJob, editJob } from '../../Redux/actions/';
+import { getAllJobs, deleteJob, editJob, getStatusHistoryById, getContactById } from '../../Redux/actions/';
 import Navbar from '../Navbar';
 import { Redirect } from 'react-router-dom';
 
@@ -47,6 +47,7 @@ class Dashboard extends Component {
         })
     }
     _contactClicked = (id) => {
+        this.props.getContactById(id);
         this.setState({
             contactClicked: true,
             historyClicked:false,
@@ -54,6 +55,7 @@ class Dashboard extends Component {
         })
     }
     _historyClicked = (id) => {
+        this.props.getStatusHistoryById(id);
         this.setState({
             historyClicked:true,
             contactClicked: false
@@ -120,6 +122,12 @@ class Dashboard extends Component {
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                <td>{this.props.contact.name}</td>
+                <td>{this.props.contact.email}</td>
+                <td>{this.props.contact.phone}</td>
+
+                </tr>
                 </tbody>
                     </table>
                 </div>
@@ -136,6 +144,11 @@ class Dashboard extends Component {
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                <td>{this.props.statusHistory.date}</td>
+                <td>{this.props.statusHistory.statusType && this.props.statusHistory.statusType.status_type}</td>
+
+                </tr>
                 </tbody>
                     </table>
                 </div>
@@ -155,7 +168,9 @@ Dashboard.propTypes = {
 const mapPropsToDispatch = dispatch => ({
     getAllJobs: () => { dispatch(getAllJobs()) },
     deleteJob: (id, index) => { dispatch(deleteJob(id, index))},
-    editJob: (id, index) => { dispatch(editJob(id, index))}
+    editJob: (id, index) => { dispatch(editJob(id, index))},
+    getContactById: (id) => { dispatch(getContactById(id))},
+    getStatusHistoryById: (id) => {dispatch(getStatusHistoryById(id))}
   });
 
   const mapStateToProps = state => ({
