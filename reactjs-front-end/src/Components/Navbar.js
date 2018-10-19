@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     render() {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">{this.props.title}</a>
+                <Link to='/' className="navbar-brand">{this.props.title}</Link>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <Link to='/' className="nav-link">Home <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Add a Job</a>
+                            <Link to='/addjob' className="nav-link">Add a Job</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Profile</a>
+                            <Link to='/profile' className="nav-link">Profile</Link>
                         </li>
     
                     </ul>
