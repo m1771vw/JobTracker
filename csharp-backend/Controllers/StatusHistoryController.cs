@@ -40,21 +40,35 @@ namespace csharp_backend.Controllers
         }
 
         // GET api/values/5
+        // [HttpGet("{id}")]
+        // public IActionResult Get(int id)
+        // {
+        //     StatusHistory statusHistory = _context.StatusHistory
+        //                             .Include("Job") //Table Name?
+        //                             .Include(s => s.Job.Contact)
+        //                             .Include(s => s.Job.Site)
+        //                             .Include(s => s.StatusType).SingleOrDefault(s => s.status_history_id == id);
+        //     if(statusHistory == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return Ok(statusHistory);
+        // }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            StatusHistory statusHistory = _context.StatusHistory
+                Console.WriteLine("Get status history Job by ID");
+            List<StatusHistory> statusHistory = _context.StatusHistory
                                     .Include("Job") //Table Name?
                                     .Include(s => s.Job.Contact)
                                     .Include(s => s.Job.Site)
-                                    .Include(s => s.StatusType).SingleOrDefault(s => s.status_history_id == id);
+                                    .Include(s => s.StatusType).Where(s => s.job_id == id).ToList();
             if(statusHistory == null)
             {
                 return NotFound();
             }
             return Ok(statusHistory);
         }
-
         // POST api/values
         [HttpPost]
         public IActionResult Post([FromBody] StatusHistory statusHistory)

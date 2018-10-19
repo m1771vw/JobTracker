@@ -6,7 +6,7 @@ const initialState = {
   editIndex: 0,
   editId: 0,
   contact: {},
-  statusHistory: {},
+  statusHistory: [],
   userToken: "",
   authorized: false
   // jobs: [{
