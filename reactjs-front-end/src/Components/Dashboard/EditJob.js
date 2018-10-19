@@ -14,6 +14,7 @@ class EditJob extends Component {
         url: this.props.editFields.url,
         site: this.props.editFields.site.site_id,
         notes: this.props.editFields.notes,
+        // status: this.status.editFields.status,
         submitClicked: false
     }
 
@@ -123,6 +124,12 @@ class EditJob extends Component {
                     <label htmlFor="example-password-input" className="col-2 col-form-label">Site</label>
                     <div className="col-10">
                         <input className="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="example-number-input" className="col-2 col-form-label">Status</label>
+                    <div className="col-10">
+                        <input className="form-control" type="text" value={this.state.status} onChange={this.onStatusChange} idç="example-number-input" />
                     </div>
                 </div>
                 <div className="form-group row">

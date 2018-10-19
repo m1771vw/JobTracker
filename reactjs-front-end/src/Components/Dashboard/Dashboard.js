@@ -95,6 +95,7 @@ class Dashboard extends Component {
                         <th>Contact</th>
                         <th>Url</th>
                         <th>Site</th>
+                        <th>Status</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
@@ -110,6 +111,7 @@ class Dashboard extends Component {
                                 <td onClick={() => this._contactClicked(item.contact.contact_id)}>{item.contact.name}</td>
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
+                                <td>{item.status}</td>
                                 <td>{item.notes}</td>
                                 <td><button className="btn btn-warning" onClick={() => { this._editJob(item.job_id, index) }} >Edit</button></td>
                                 <td><button className="btn btn-info" onClick={() => { this._historyClicked(item.job_id) }} >History</button></td>

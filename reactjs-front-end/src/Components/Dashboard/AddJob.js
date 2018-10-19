@@ -15,6 +15,7 @@ class AddJob extends Component {
         url: "",
         site: "",
         notes: "",
+        status:"",
         submitClicked: false
     }
 
@@ -117,6 +118,12 @@ class AddJob extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group row">
+                                    <label htmlFor="example-number-input" className="col-2 col-form-label">Status</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="text" value={this.state.status} onChange={this.onStatusChange} id="example-number-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
                                     <label htmlFor="example-number-input" className="col-2 col-form-label">Notes</label>
                                     <div className="col-10">
                                         <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
@@ -127,10 +134,10 @@ class AddJob extends Component {
                         </div>
                         :
                         <div>
-            <HomeNavbar title="Job Tracker"/>
-            <h1>YOU ARE NOT AUTHORIZED.PLEASE LOG IN.</h1>
-            </div>
-            }
+                            <HomeNavbar title="Job Tracker" />
+                            <h1>YOU ARE NOT AUTHORIZED.PLEASE LOG IN.</h1>
+                        </div>
+                }
 
             </div>
 
