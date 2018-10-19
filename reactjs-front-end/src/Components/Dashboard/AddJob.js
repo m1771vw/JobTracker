@@ -64,7 +64,7 @@ class AddJob extends Component {
         let finalJob = { ...newJob, contact_id, site_id }
         this.props.addJob(finalJob);
         this.setState({
-            submitClicekd:true
+            submitClicked:true
         })
 
     }
@@ -72,7 +72,7 @@ class AddJob extends Component {
     render() {
         return (
             <div>
-            { this.state.submitClicked ? <Redirect to='/'/>
+            { this.state.submitClicked ? <Redirect to='/dashboard'/>
             :
             <div>
             <Navbar title="Add a Job"/>
