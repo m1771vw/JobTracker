@@ -64,3 +64,14 @@ export const register = (user) => dispatch => {
 
         })
 }
+
+export const login = (user) => dispatch => {
+    console.log("USER:", user);
+    axios.post(`http://localhost:5000/api/JobTrackerUser/login`, user)
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(err => {
+
+        })
+}

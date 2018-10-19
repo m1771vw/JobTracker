@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import HomeNavbar from '../HomeNavbar';
 import { Link } from 'react-router-dom';
-
+import { login } from '../../Redux/actions/';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
-
-
+    state = {
+        username:"",
+        password:"",
+        submitClicked: false
+    }
+    onSubmitClick = (e) => {
+        e.preventDefault();
+        console.log("Submit clicked");
+        let user = {
+            username: "will",
+            password: "123"
+        }
+        this.props.login(user);
+        this.setState({
+            submitClicked: true
+        })
+    }
     render() {
         return (
+            <div>
+            { this.state.submitClicked ? <Redirect to='/dashboard'/>
+            :
             <div>
             <HomeNavbar title="Log In"/>
             <div className="signup-container">
@@ -44,7 +64,7 @@ class Login extends Component {
                                             <div className="form-group">
                                                 <div className="row">
                                                     <div className="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Log In" />
+                                                        <input onClick={this.onSubmitClick} type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Log In" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,8 +87,12 @@ class Login extends Component {
                 </div>
             </div>
             </div>
+        }
+        </div>
         );
     }
 }
-
-export default Login;
+const mapPropsToDispatch = dispatch => ({
+    login: (user) => { dispatch(login(user))}
+  });
+export default connect(null, mapPropsToDispatch)(Login);
