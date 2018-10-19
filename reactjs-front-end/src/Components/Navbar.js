@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link to='/' className="navbar-brand">{this.props.title}</Link>
+                <Link to='/dashboard' className="navbar-brand">{this.props.title}</Link>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
