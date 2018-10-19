@@ -68,6 +68,7 @@ class Dashboard extends Component {
     componentDidUpdate(prevProps) {
         if(prevProps.userToken !== this.props.userToken) {
             console.log("Component did update");
+            console.log("Authorization: ", this.props.authorized);
             this.fetchAllJobs();
         }
     }
@@ -81,8 +82,8 @@ class Dashboard extends Component {
     return (
         <div>
             {this.state.editClicked ? <Redirect to='/editjob'/> :
+                this.props.authorized ? 
         <div>
-           
             <Navbar title="Dashboard"/>
             <table className="table table-striped">
                 <thead>
@@ -163,6 +164,13 @@ class Dashboard extends Component {
             
             }
         </div>
+            :
+            <div>
+            <HomeNavbar title="Job Tracker"/>
+            <h1>YOU ARE NOT AUTHORIZED.PLEASE LOG IN.</h1>
+            </div>
+
+    
     }
     
         </div>
