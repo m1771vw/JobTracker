@@ -2,7 +2,9 @@ import { ALL_JOBS, ADD_JOB, DELETE_JOB, EDIT_JOB, UPDATE_JOB } from '../constant
 
 const initialState = {
   jobs: [],
-  editJob: {}
+  editJob: {},
+  editIndex: 0,
+  editId: 0
   // jobs: [{
   //       "job_id": 0,
   //       "position": "",
@@ -30,7 +32,6 @@ const initialState = {
  *    case statements
  */
 const rootReducer = (state = initialState, action) => {
-  console.log("Action payload:", action.payload);
   switch (action.type) {
     case ALL_JOBS:
       return { ...state, jobs: action.payload};
@@ -47,9 +48,21 @@ const rootReducer = (state = initialState, action) => {
         ]
       };
     case EDIT_JOB:
-      return state;
+      return {
+        ...state,
+        editJob: state.jobs[action.index],
+        editIndex:action.index,
+        editId:action.id
+      };
     case UPDATE_JOB:
-      return state;
+      return {
+        ...state,
+        jobs: [
+          ...state.jobs.slice(0, action.index),
+          action.payload,
+          ...state.jobs.slice(action.index+1)
+        ],
+      };
     default:
       return state;
   }

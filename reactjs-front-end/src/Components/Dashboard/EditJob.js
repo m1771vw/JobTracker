@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
 import { connect } from 'react-redux';
-import { editJob } from '../../Redux/actions/';
+import { updateJob } from '../../Redux/actions/';
 import { Redirect } from 'react-router-dom';
 
 class EditJob extends Component {
     state = {
+        job_id: "",
         position: "",
         company: "",
         salary: "",
@@ -61,8 +62,19 @@ class EditJob extends Component {
         let contact_id = Number(this.state.contact);
         let site_id = Number(this.state.site);
         let { submitClicked, contact, site, ...newJob } = this.state
-        let finalJob = { ...newJob, contact_id, site_id }
-        this.props.EditJob(finalJob);
+        // let finalJob = { ...newJob, contact_id, site_id }
+        let finalJob = {
+            job_id: 1,
+            position: "AAAA",
+            company: "AAAA",
+            salary: "10",
+            contact_id: 1,
+            url: "AAAA",
+            site_id: 2,
+            notes: "AAAAAAA",
+        }
+        // this.props.updateJob(this.props.editId, this.props.editIndex, finalJob);
+        this.props.updateJob(1, 0, finalJob);
         this.setState({
             submitClicked:true
         })
@@ -128,8 +140,13 @@ class EditJob extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    editFields: state.editFields,
+    editId: state.editId,
+    editIndex: state.editIndex
+})
 const mapPropsToDispatch = dispatch => ({
-    editJob: (job) => { dispatch(editJob(job))}
+    updateJob: (id, index, job) => { dispatch(updateJob(id, index, job))}
 });
 
-export default connect(null, mapPropsToDispatch)(EditJob);
+export default connect(mapStateToProps, mapPropsToDispatch)(EditJob);

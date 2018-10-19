@@ -39,18 +39,12 @@ export const deleteJob = (id, index) => dispatch => {
 }
 
 export const editJob = (id, index) => dispatch => {
-    axios.put(`http://localhost:5000/api/jobs/${id}`)
-        .then(response => {
-            console.log("Axios Edit Response:", response.data);
-            dispatch({ type:EDIT_JOB, index, payload:response.data})
-        })
-        .catch(err =>{
-
-        })
+    dispatch({ type:EDIT_JOB, id, index})
 }
 
-export const updateJob = (id, index) => dispatch => {
-    axios.put(`http://localhost:5000/api/jobs/${id}`)
+export const updateJob = (id, index, body) => dispatch => {
+    console.log("BODY:",body);
+    axios.put(`http://localhost:5000/api/jobs/${id}`, body)
         .then(response => {
             console.log("Axios Edit Response:", response.data);
             dispatch({ type:UPDATE_JOB, index, payload:response.data})

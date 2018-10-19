@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types'
 import { connect } from 'react-redux';
-import { getAllJobs, deleteJob } from '../../Redux/actions/';
+import { getAllJobs, deleteJob, editJob } from '../../Redux/actions/';
 import Navbar from '../Navbar';
 import { Redirect } from 'react-router-dom';
 
@@ -33,12 +33,13 @@ class Dashboard extends Component {
     state = {
         editClicked: false
     }
-    deleteUser = (id, index) => {
+    _deleteJob = (id, index) => {
         console.log("Trying to delete index: ", index);
         this.props.deleteJob(id, index);
         // this.fetchAllJobs();
     }
-    editUser = (id, index) => {
+    _editJob = (id, index) => {
+        this.props.editJob(id, index);
         this.setState({
             editClicked: true
         })
@@ -46,14 +47,11 @@ class Dashboard extends Component {
     componentDidMount() {
         this.fetchAllJobs();
     }
+
     fetchAllJobs = () => {
         this.props.getAllJobs();
     }
-    // componentDidUpdate(prevProps) {
-    //     if(prevProps.jobs.count !== this.props.jobs.count) {
 
-    //     }
-    // }
     render() {
     
     return (
@@ -76,7 +74,7 @@ class Dashboard extends Component {
                 </thead>
                 <tbody>
                     {/* type: array< object { email, username, password } > */}
-                    { this.props.jobs.jobs.map((item, index) => {
+                    { this.props.jobs.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{item.job_id}</td>
@@ -87,8 +85,8 @@ class Dashboard extends Component {
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
                                 <td>{item.notes}</td>
-                                <td><button className="btn btn-warning" onClick={() => { this.editUser(item.job_id, index) }} >Edit</button></td>
-                                <td><button className="btn btn-danger" onClick={() => { this.deleteUser(item.job_id, index) }} >Delete</button></td>
+                                <td><button className="btn btn-warning" onClick={() => { this._editJob(item.job_id, index) }} >Edit</button></td>
+                                <td><button className="btn btn-danger" onClick={() => { this._deleteJob(item.job_id, index) }} >Delete</button></td>
                             </tr>
                         )
                     })}
@@ -107,10 +105,11 @@ Dashboard.propTypes = {
 }
 const mapPropsToDispatch = dispatch => ({
     getAllJobs: () => { dispatch(getAllJobs()) },
-    deleteJob: (id, index) => { dispatch(deleteJob(id, index))}
+    deleteJob: (id, index) => { dispatch(deleteJob(id, index))},
+    editJob: (id, index) => { dispatch(editJob(id, index))}
   });
 
   const mapStateToProps = state => ({
-    jobs: state
+    jobs: state.jobs
   });
 export default connect(mapStateToProps, mapPropsToDispatch)(Dashboard);
