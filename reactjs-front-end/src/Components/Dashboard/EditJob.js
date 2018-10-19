@@ -6,14 +6,14 @@ import { Redirect } from 'react-router-dom';
 
 class EditJob extends Component {
     state = {
-        job_id: "",
-        position: "",
-        company: "",
-        salary: "",
-        contact: "",
-        url: "",
-        site: "",
-        notes: "",
+        job_id: this.props.editFields.job_id,
+        position: this.props.editFields.position,
+        company: this.props.editFields.company,
+        salary: this.props.editFields.salary,
+        contact: this.props.editFields.contact.contact_id,
+        url: this.props.editFields.url,
+        site: this.props.editFields.site.site_id,
+        notes: this.props.editFields.notes,
         submitClicked: false
     }
 
@@ -62,19 +62,19 @@ class EditJob extends Component {
         let contact_id = Number(this.state.contact);
         let site_id = Number(this.state.site);
         let { submitClicked, contact, site, ...newJob } = this.state
-        // let finalJob = { ...newJob, contact_id, site_id }
-        let finalJob = {
-            job_id: 1,
-            position: "AAAA",
-            company: "AAAA",
-            salary: "10",
-            contact_id: 1,
-            url: "AAAA",
-            site_id: 2,
-            notes: "AAAAAAA",
-        }
-        // this.props.updateJob(this.props.editId, this.props.editIndex, finalJob);
-        this.props.updateJob(1, 0, finalJob);
+        let finalJob = { ...newJob, contact_id, site_id }
+        // let finalJob = {
+        //     job_id: 1,
+        //     position: "AAAA",
+        //     company: "AAAA",
+        //     salary: "10",
+        //     contact_id: 1,
+        //     url: "AAAA",
+        //     site_id: 2,
+        //     notes: "AAAAAAA",
+        // }
+        this.props.updateJob(this.props.editId, this.props.editIndex, finalJob);
+        // this.props.updateJob(1, 0, finalJob);
         this.setState({
             submitClicked:true
         })
@@ -88,7 +88,7 @@ class EditJob extends Component {
             :
             <div>
             <Navbar title="Edit Job"/>
-                {/* <div style ={{margin: "20px"}}> */}
+                <div style ={{margin: "20px"}}>
                 <div className="form-group row">
                     <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
                     <div className="col-10">
@@ -133,6 +133,7 @@ class EditJob extends Component {
                 </div>
                 <button className="btn btn-warning" onClick={this.onSubmitClicked} >Update</button>
                 </div>
+                </div>
             }
             </div>
             
@@ -141,7 +142,7 @@ class EditJob extends Component {
 }
 
 const mapStateToProps = state => ({
-    editFields: state.edtJob,
+    editFields: state.editJob,
     editId: state.editId,
     editIndex: state.editIndex
 })

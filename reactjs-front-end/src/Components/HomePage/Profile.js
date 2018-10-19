@@ -3,7 +3,18 @@ import Navbar from '../Navbar';
 
 
 class Profile extends Component {
+    state = {
+        logoutClicked: false
+    }
 
+
+    onLogoutClick = (e) => {
+        e.preventDefault();
+        console.log("Logout clicked");
+        this.setState({
+            logoutClicked: true
+        })
+    }
 
 
     render() {
@@ -13,6 +24,7 @@ class Profile extends Component {
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
+                        
                             <div class="card">
                                 <div class="card-box">
                                     <div class="card-title mb-4">
@@ -33,6 +45,8 @@ class Profile extends Component {
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" onClick={this.onLogoutClick} class="btn btn-primary btn-sm">Logout</button>
+
                                     <div class="row">
                                         <div class="col-12">
                                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
