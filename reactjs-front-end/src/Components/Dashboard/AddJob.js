@@ -56,16 +56,11 @@ class AddJob extends Component {
         })
     }
     onSubmitClicked = () => {
-        let job = {
-            position: "mid prog",
-            company: "redw",
-            salary: "10000",
-            contact_id: 1,
-            url: "redwood.edu",
-            site_id: 1,
-            notes: "great place code camp"
-        }
-        this.props.addJob(job);
+        let contact_id = Number(this.state.contact);
+        let site_id = Number(this.state.site);
+        let { contact, site, ...newJob } = this.state
+        let finalJob = { ...newJob, contact_id, site_id }
+        this.props.addJob(finalJob);
     }
     
     render() {
