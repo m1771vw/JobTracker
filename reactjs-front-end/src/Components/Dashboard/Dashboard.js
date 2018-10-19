@@ -78,7 +78,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        this.props.statusHistory && console.log("status history", this.props.statusHistory)
+        this.props.statusHistory && console.log("Rendered status history", this.props.statusHistory)
     return (
         <div>
             {this.state.editClicked ? <Redirect to='/editjob'/> :
@@ -102,7 +102,9 @@ class Dashboard extends Component {
                 <tbody>
                     {/* type: array< object { email, username, password } > */}
                     { this.props.jobs.map((item, index) => {
+                        let jobStatusHistory = this.props.allStatusHistory.filter(x => x.job_id === item.job_id)
                         return (
+
                             <tr key={index}>
                                 <td>{item.job_id}</td>
                                 <td>{item.position}</td>
@@ -111,7 +113,7 @@ class Dashboard extends Component {
                                 <td onClick={() => this._contactClicked(item.contact.contact_id)}>{item.contact.name}</td>
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
-                                <td>{item.status}</td>
+                                <td>{jobStatusHistory && jobStatusHistory.pop().statusType.status_type}</td>
                                 <td>{item.notes}</td>
                                 <td><button className="btn btn-warning" onClick={() => { this._editJob(item.job_id, index) }} >Edit</button></td>
                                 <td><button className="btn btn-info" onClick={() => { this._historyClicked(item.job_id) }} >History</button></td>
@@ -207,6 +209,7 @@ const mapPropsToDispatch = dispatch => ({
     contact: state.contact,
     statusHistory: state.statusHistory,
     authorized: state.authorized,
-    userToken: state.userToken
+    userToken: state.userToken,
+    allStatusHistory: state.allStatusHistory
   });
 export default connect(mapStateToProps, mapPropsToDispatch)(Dashboard);

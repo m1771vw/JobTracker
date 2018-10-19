@@ -14,10 +14,15 @@ export const getAllJobs = (userToken) => dispatch => {
         .catch(err => {
             console.log("Error: ", err);
         })
+    axios.get('http://localhost:5000/api/statushistory')
+        .then(response => {
+            console.log("Status History Response:", response);
+            dispatch({ type: "ALL_STATUS_HISTORY", payload: response.data})
+        })
    
 }
 
-export const addJob = (job) => dispatch => {
+export const addJob = (job, status) => dispatch => {
     axios.post('http://localhost:5000/api/jobs', job)
         .then(response => {
             console.log("Axios Post Response:",response.data);
@@ -28,7 +33,7 @@ export const addJob = (job) => dispatch => {
             let statusHistoryBody = {
                 job_id: response.data.job_id,
                 date: finalDate,
-                status_type_id: 1,
+                status_type_id: status,
             }
             console.log("Status history body", statusHistoryBody);
             axios.post('http://localhost:5000/api/statushistory', statusHistoryBody)

@@ -7,6 +7,7 @@ const initialState = {
   editId: 0,
   contact: {},
   statusHistory: [],
+  allStatusHistory: [],
   userToken: "",
   authorized: false
   // jobs: [{
@@ -87,6 +88,11 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           userToken: "",
           authorized: false
+        }
+        case "ALL_STATUS_HISTORY":
+        return {
+          ...state,
+          allStatusHistory: action.payload
         }
     default:
       return state;

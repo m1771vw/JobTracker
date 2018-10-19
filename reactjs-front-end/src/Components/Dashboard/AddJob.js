@@ -60,12 +60,19 @@ class AddJob extends Component {
             notes: e.target.value
         })
     }
+
+    onStatusChange = e => {
+        this.setState({
+            status: e.target.value
+        })
+    }
+
     onSubmitClicked = () => {
         let contact_id = Number(this.state.contact);
         let site_id = Number(this.state.site);
         let { submitClicked, contact, site, ...newJob } = this.state
         let finalJob = { ...newJob, contact_id, site_id }
-        this.props.addJob(finalJob);
+        this.props.addJob(finalJob, this.state.status);
         this.setState({
             submitClicked: true
         })
@@ -146,7 +153,7 @@ class AddJob extends Component {
 }
 
 const mapPropsToDispatch = dispatch => ({
-    addJob: (job) => { dispatch(addJob(job)) }
+    addJob: (job, status) => { dispatch(addJob(job, status)) }
 });
 
 const mapStateToProps = state => ({
