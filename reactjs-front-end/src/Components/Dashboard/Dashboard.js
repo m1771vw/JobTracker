@@ -78,7 +78,7 @@ class Dashboard extends Component {
     }
 
     render() {
-    
+        this.props.statusHistory && console.log("status history", this.props.statusHistory)
     return (
         <div>
             {this.state.editClicked ? <Redirect to='/editjob'/> :
@@ -153,11 +153,21 @@ class Dashboard extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                <td>{this.props.statusHistory.date}</td>
-                <td>{this.props.statusHistory.statusType && this.props.statusHistory.statusType.status_type}</td>
+             
+                {   
+                    this.props.statusHistory !== [] && this.props.statusHistory.map((item, index) => {
+                        
+                        return(
+                            <tr key={index + item}>
+                            <td>{item.date}</td>
+                            <td>{item.statusType && item.statusType.status_type}</td>
+                             </tr>
 
-                </tr>
+                        )
+                    })
+                }
+       
+
                 </tbody>
                     </table>
                 </div>
