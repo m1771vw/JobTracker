@@ -12,6 +12,7 @@ class Login extends Component {
         password:"",
         submitClicked: false
     }
+
     onSubmitClick = (e) => {
         e.preventDefault();
         console.log("Submit clicked");
@@ -24,6 +25,20 @@ class Login extends Component {
             submitClicked: true
         })
     }
+
+    onUsernameChange = e => {
+        this.setState({
+            username: e.target.value
+        })
+    }
+
+    onPasswordChange = e => {
+        this.setState({
+            password: e.target.value
+        })
+    }
+
+
     render() {
         return (
             <div>
@@ -52,10 +67,10 @@ class Login extends Component {
                                         <div className="col-lg-12">
                                         <form id="login-form" method="post" role="form" style={{display: "block"}} >
                                             <div className="form-group">
-                                                <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value="" />
+                                                <input type="text" name="username" id="username" tabIndex="1" className="form-control" value ={this.state.username} onChange ={this.onUsernameChange} placeholder="Username" />
                                             </div>
                                             <div className="form-group">
-                                                <input type="password" name="password" id="password" tabIndex="2" className="form-control" placeholder="Password" />
+                                                <input type="password" name="password" id="password" tabIndex="2" className="form-control" value ={this.state.password} onChange ={this.onPasswordChange} placeholder="Password" />
                                             </div>
                                             <div className="form-group text-center">
                                                 <input type="checkbox" tabIndex="3" className="" name="remember" id="remember" />
