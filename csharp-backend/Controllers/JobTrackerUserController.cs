@@ -27,7 +27,8 @@ namespace csharp_backend.Controllers
             _context = context;
         }
         
-        [HttpGet, Authorize]
+        [HttpGet]
+        // [HttpGet, Authorize]
         public IActionResult Get()
         {
             //Trying to find

@@ -2,10 +2,12 @@ import { ALL_JOBS, ADD_JOB, DELETE_JOB, EDIT_JOB, UPDATE_JOB } from '../constant
 import axios from 'axios';
 
 
-export const getAllJobs = () => dispatch => {
-    axios.get('http://localhost:5000/api/jobs')
+export const getAllJobs = (userToken) => dispatch => {
+    let USER_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mzk5NjgxNDEsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6ImxvY2FsaG9zdCJ9.CIvEf4kGRR4K16LzMM12tepJOnc6ISvD_bAcQ2DKi30'
+    let AuthStr = 'Bearer '.concat(userToken);
+    console.log('Usertoken:', userToken);
+    axios.get('http://localhost:5000/api/jobs', { headers: { Authorization: AuthStr }})
         .then(response => {
-
             console.log("Response: ", response);
             dispatch({ type: ALL_JOBS, payload: response.data})
         })
@@ -51,7 +53,7 @@ export const updateJob = (id, index, body) => dispatch => {
         })
         .catch(err =>{
 
-        })
+        })  
 }
 
 export const register = (user) => dispatch => {
@@ -70,9 +72,10 @@ export const login = (user) => dispatch => {
     axios.post(`http://localhost:5000/api/JobTrackerUser/login`, user)
         .then(res => {
             console.log(res.data);
+            dispatch({type: "LOG_IN", payload: res.data})
         })
         .catch(err => {
-
+            console.log("Login error: ", err.data);
         })
 }
 

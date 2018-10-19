@@ -16,9 +16,13 @@ class Login extends Component {
     onSubmitClick = (e) => {
         e.preventDefault();
         console.log("Submit clicked");
+        // let user = {
+        //     username: "will",
+        //     password: "123"
+        // }
+        let { username, password } = this.state
         let user = {
-            username: "will",
-            password: "123"
+            username, password
         }
         this.props.login(user);
         this.setState({

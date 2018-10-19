@@ -12,6 +12,9 @@ import HomePage from './Components/HomePage/HomePage';
 import './App.css';
 
 class App extends Component {
+  state = {
+    authorized : false
+  }
   render() {
     return (
       <div>

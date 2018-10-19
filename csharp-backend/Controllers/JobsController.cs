@@ -6,7 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 using JobTracker.Models;
 using Microsoft.EntityFrameworkCore;
-
+using BCrypt.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 namespace csharp_backend.Controllers
 {
     [Route("api/[controller]")]
@@ -20,7 +26,7 @@ namespace csharp_backend.Controllers
             _context = context;
         }
         // GET api/values
-        [HttpGet]
+        [HttpGet, Authorize]
         public IActionResult Get()
         {
             if(_context.Jobs.ToList().Count == 0 )

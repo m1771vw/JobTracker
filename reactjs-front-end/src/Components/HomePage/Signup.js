@@ -18,8 +18,8 @@ class Signup extends Component {
         e.preventDefault();
         console.log("Submit clicked");
         let user = {
-            username: "will",
-            password: "123"
+            username: this.state.username,
+            password: this.state.password
         }
         this.props.register(user);
         this.setState({
@@ -78,21 +78,21 @@ class Signup extends Component {
                                     
                                         <form id="register-form" method="post" role="form" style={{display: "block"}}>
                                             <div className="form-group">
-                                                <input type="text" name="username" id="username" tabindex="1" onChange = {this.onUsernameChange} value={this.state.username} className="form-control" placeholder="Username"  />
+                                                <input type="text" name="username" id="username" tabIndex="1" onChange = {this.onUsernameChange} value={this.state.username} className="form-control" placeholder="Username"  />
                                             </div>
                                             <div className="form-group">
-                                                <input type="email" name="email" id="email" tabindex="1" onChange = {this.onEmailChange} value={this.state.email} className="form-control" placeholder="Email Address"  />
+                                                <input type="email" name="email" id="email" tabIndex="1" onChange = {this.onEmailChange} value={this.state.email} className="form-control" placeholder="Email Address"  />
                                             </div>
                                             <div className="form-group">
-                                                <input type="password" name="password" id="password" tabindex="2" onChange = {this.onPasswordChange} value={this.state.password} className="form-control" placeholder="Password" />
+                                                <input type="password" name="password" id="password" tabIndex="2" onChange = {this.onPasswordChange} value={this.state.password} className="form-control" placeholder="Password" />
                                             </div>
                                             <div className="form-group">
-                                                <input type="password" name="confirm-password" id="confirm-password" onChange = {this.onConfirmPasswordChange} value={this.state.confirmpassword} tabindex="2" className="form-control" placeholder="Confirm Password" />
+                                                <input type="password" name="confirm-password" id="confirm-password" onChange = {this.onConfirmPasswordChange} value={this.state.confirmpassword} tabIndex="2" className="form-control" placeholder="Confirm Password" />
                                             </div>
                                             <div className="form-group">
                                                 <div className="row">
                                                     <div className="col-sm-6 col-sm-offset-3">
-                                                        <input onClick={this.onSubmitClick} type="submit" name="register-submit" id="register-submit" tabindex="4" className="form-control btn btn-register" value="Register Now" />
+                                                        <input onClick={this.onSubmitClick} type="submit" name="register-submit" id="register-submit" tabIndex="4" className="form-control btn btn-register" value="Register Now" />
                                                     </div>
                                                 </div>
                                             </div>

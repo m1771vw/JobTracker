@@ -3,6 +3,7 @@ import { array } from 'prop-types'
 import { connect } from 'react-redux';
 import { getAllJobs, deleteJob, editJob, getStatusHistoryById, getContactById } from '../../Redux/actions/';
 import Navbar from '../Navbar';
+import HomeNavbar from '../HomeNavbar';
 import { Redirect } from 'react-router-dom';
 
 // let testData = [
@@ -64,9 +65,15 @@ class Dashboard extends Component {
     componentDidMount() {
         this.fetchAllJobs();
     }
-
+    componentDidUpdate(prevProps) {
+        if(prevProps.userToken !== this.props.userToken) {
+            console.log("Component did update");
+            this.fetchAllJobs();
+        }
+    }
     fetchAllJobs = () => {
-        this.props.getAllJobs();
+        console.log("Dashboard:", this.props.userToken);
+        this.props.getAllJobs(this.props.userToken);
     }
 
     render() {
@@ -75,6 +82,7 @@ class Dashboard extends Component {
         <div>
             {this.state.editClicked ? <Redirect to='/editjob'/> :
         <div>
+           
             <Navbar title="Dashboard"/>
             <table className="table table-striped">
                 <thead>
@@ -156,6 +164,7 @@ class Dashboard extends Component {
             }
         </div>
     }
+    
         </div>
 
                 
@@ -166,7 +175,7 @@ Dashboard.propTypes = {
     dashboard: array
 }
 const mapPropsToDispatch = dispatch => ({
-    getAllJobs: () => { dispatch(getAllJobs()) },
+    getAllJobs: (userToken) => { dispatch(getAllJobs(userToken)) },
     deleteJob: (id, index) => { dispatch(deleteJob(id, index))},
     editJob: (id, index) => { dispatch(editJob(id, index))},
     getContactById: (id) => { dispatch(getContactById(id))},
@@ -176,6 +185,8 @@ const mapPropsToDispatch = dispatch => ({
   const mapStateToProps = state => ({
     jobs: state.jobs,
     contact: state.contact,
-    statusHistory: state.statusHistory
+    statusHistory: state.statusHistory,
+    authorized: state.authorized,
+    userToken: state.userToken
   });
 export default connect(mapStateToProps, mapPropsToDispatch)(Dashboard);

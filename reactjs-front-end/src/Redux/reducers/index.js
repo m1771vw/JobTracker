@@ -6,7 +6,9 @@ const initialState = {
   editIndex: 0,
   editId: 0,
   contact: {},
-  statusHistory: {}
+  statusHistory: {},
+  userToken: "",
+  authorized: false
   // jobs: [{
   //       "job_id": 0,
   //       "position": "",
@@ -74,6 +76,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         contact: action.payload
       };
+      case "LOG_IN":
+        return {
+          ...state,
+          userToken: action.payload
+        }
     default:
       return state;
   }
