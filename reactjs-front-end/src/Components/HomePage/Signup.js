@@ -18,7 +18,7 @@ class Signup extends Component {
         e.preventDefault();
         console.log("Submit clicked");
         let user = {
-            username: this.state.username,
+            username: this.state.username,      
             password: this.state.password
         }
         this.props.register(user);
