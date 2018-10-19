@@ -1,7 +1,8 @@
-import { ALL_JOBS, ADD_JOB, DELETE_JOB } from '../constants';
+import { ALL_JOBS, ADD_JOB, DELETE_JOB, EDIT_JOB, UPDATE_JOB } from '../constants';
 
 const initialState = {
-  jobs: []
+  jobs: [],
+  editJob: {}
   // jobs: [{
   //       "job_id": 0,
   //       "position": "",
@@ -34,10 +35,7 @@ const rootReducer = (state = initialState, action) => {
     case ALL_JOBS:
       return { ...state, jobs: action.payload};
     case ADD_JOB:
-    console.log("trying to add job",action.payload);
-    console.log("Currewnt state", state);
     let newJob = [...state.jobs, action.payload];
-    console.log("New Job", newJob);
       return { ...state,
                jobs: [...state.jobs, action.payload]
       };
@@ -48,6 +46,10 @@ const rootReducer = (state = initialState, action) => {
                ...state.jobs.slice(action.index+1)
         ]
       };
+    case EDIT_JOB:
+      return state;
+    case UPDATE_JOB:
+      return state;
     default:
       return state;
   }

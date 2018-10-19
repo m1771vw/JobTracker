@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
 import { connect } from 'react-redux';
-import { addJob } from '../../Redux/actions/';
+import { editJob } from '../../Redux/actions/';
 import { Redirect } from 'react-router-dom';
 
-class AddJob extends Component {
+class EditJob extends Component {
     state = {
         position: "",
         company: "",
@@ -62,7 +62,7 @@ class AddJob extends Component {
         let site_id = Number(this.state.site);
         let { submitClicked, contact, site, ...newJob } = this.state
         let finalJob = { ...newJob, contact_id, site_id }
-        this.props.addJob(finalJob);
+        this.props.EditJob(finalJob);
         this.setState({
             submitClicked:true
         })
@@ -75,7 +75,7 @@ class AddJob extends Component {
             { this.state.submitClicked ? <Redirect to='/dashboard'/>
             :
             <div>
-            <Navbar title="Add a Job"/>
+            <Navbar title="Edit Job"/>
                 {/* <div style ={{margin: "20px"}}> */}
                 <div className="form-group row">
                     <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
@@ -119,7 +119,7 @@ class AddJob extends Component {
                         <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
                     </div>
                 </div>
-                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button>
+                <button className="btn btn-warning" onClick={this.onSubmitClicked} >Update</button>
                 </div>
             }
             </div>
@@ -129,7 +129,7 @@ class AddJob extends Component {
 }
 
 const mapPropsToDispatch = dispatch => ({
-    addJob: (job) => { dispatch(addJob(job))}
+    editJob: (job) => { dispatch(editJob(job))}
 });
 
-export default connect(null, mapPropsToDispatch)(AddJob);
+export default connect(null, mapPropsToDispatch)(EditJob);

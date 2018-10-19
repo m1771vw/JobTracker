@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+import logo from '../img/JobTracker.png';
 class HomeNavbar extends Component {
     render() {
         return (
@@ -21,7 +21,10 @@ class HomeNavbar extends Component {
                         </li>
     
                     </ul>
+
                 </div>
+                <img className='header-logo' src={logo} alt="The logo"/>
+
             </nav>
             </div>
         );

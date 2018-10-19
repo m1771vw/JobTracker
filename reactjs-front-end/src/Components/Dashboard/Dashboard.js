@@ -3,6 +3,8 @@ import { array } from 'prop-types'
 import { connect } from 'react-redux';
 import { getAllJobs, deleteJob } from '../../Redux/actions/';
 import Navbar from '../Navbar';
+import { Redirect } from 'react-router-dom';
+
 // let testData = [
 //     {
 //         "job_id": 1,
@@ -29,13 +31,17 @@ import Navbar from '../Navbar';
 
 class Dashboard extends Component {
     state = {
-
+        editClicked: false
     }
     deleteUser = (id, index) => {
         console.log("Trying to delete index: ", index);
         this.props.deleteJob(id, index);
         // this.fetchAllJobs();
-
+    }
+    editUser = (id, index) => {
+        this.setState({
+            editClicked: true
+        })
     }
     componentDidMount() {
         this.fetchAllJobs();
@@ -51,6 +57,8 @@ class Dashboard extends Component {
     render() {
     
     return (
+        <div>
+            {this.state.editClicked ? <Redirect to='/editjob'/> :
         <div>
             <Navbar title="Dashboard"/>
             <table className="table table-striped">
@@ -79,12 +87,15 @@ class Dashboard extends Component {
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
                                 <td>{item.notes}</td>
+                                <td><button className="btn btn-warning" onClick={() => { this.editUser(item.job_id, index) }} >Edit</button></td>
                                 <td><button className="btn btn-danger" onClick={() => { this.deleteUser(item.job_id, index) }} >Delete</button></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+        </div>
+    }
         </div>
 
                 

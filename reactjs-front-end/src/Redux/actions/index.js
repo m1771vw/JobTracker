@@ -1,4 +1,4 @@
-import { ALL_JOBS, ADD_JOB, DELETE_JOB } from '../constants';
+import { ALL_JOBS, ADD_JOB, DELETE_JOB, EDIT_JOB, UPDATE_JOB } from '../constants';
 import axios from 'axios';
 
 
@@ -36,4 +36,26 @@ export const deleteJob = (id, index) => dispatch => {
          .catch(err => {
 
          })
+}
+
+export const editJob = (id, index) => dispatch => {
+    axios.put(`http://localhost:5000/api/jobs/${id}`)
+        .then(response => {
+            console.log("Axios Edit Response:", response.data);
+            dispatch({ type:EDIT_JOB, index, payload:response.data})
+        })
+        .catch(err =>{
+
+        })
+}
+
+export const updateJob = (id, index) => dispatch => {
+    axios.put(`http://localhost:5000/api/jobs/${id}`)
+        .then(response => {
+            console.log("Axios Edit Response:", response.data);
+            dispatch({ type:UPDATE_JOB, index, payload:response.data})
+        })
+        .catch(err =>{
+
+        })
 }
