@@ -22,7 +22,19 @@ export const addJob = (job) => dispatch => {
         .then(response => {
             console.log("Axios Post Response:",response.data);
             dispatch({ type: ADD_JOB, payload:response.data})
+            let date = new Date().toString();
+            date = date.split(" ");
+            let finalDate = `${date[0]} ${date[1]} ${date[2]} ${date[3]} ${date[4]}`
+            let statusHistoryBody = {
+                job_id: response.data.job_id,
+                date: finalDate,
+                status_type_id: 1,
+            }
+            console.log("Status history body", statusHistoryBody);
+            axios.post('http://localhost:5000/api/statushistory', statusHistoryBody)
+                .then(res => {
 
+                })
         })
         .catch(err => {
             // console.log("Error: ", err.response.data);

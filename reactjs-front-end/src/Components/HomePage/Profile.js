@@ -28,6 +28,7 @@ class Profile extends Component {
             <div>
                 {this.state.logoutClicked ? <Redirect to='/' />
                     :
+                    this.props.authorized ?
                     <div>
                         <Navbar title="Profile" />
                         <div className="container">

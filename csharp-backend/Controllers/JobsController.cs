@@ -93,10 +93,24 @@ namespace csharp_backend.Controllers
                                     .Include("Contact")
                                     .Include("Site")
                                     .SingleOrDefault();
+
+            List<StatusHistory> statusHistory = _context.StatusHistory.Where(s => s.job_id == id)
+                                    .Include("Job") //Table Name?
+                                    .Include(s => s.Job.Contact)
+                                    .Include(s => s.Job.Site)
+                                    .Include(s => s.StatusType)
+                                    .ToList();
             if(job == null)
             {
                 return NotFound();
             }
+            foreach(var s in statusHistory)
+            {
+                Console.WriteLine(s.date);
+            _context.StatusHistory.Remove(s);
+
+            }
+
             _context.Jobs.Remove(job);
             _context.SaveChanges();
             return Ok(job);
