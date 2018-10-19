@@ -7,7 +7,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div class="container">
+            <div class="signup-container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-login">
