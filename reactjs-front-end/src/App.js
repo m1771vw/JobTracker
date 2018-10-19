@@ -14,9 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HomePage />
-        {/* <Switch>
-            <Route exact path='/' render={() => <Dashboard />}/>
+           <Switch>
+            <Route exact path='/' render={() => <HomePage />}/>
             <Route path='/addjob' render={() => <AddJob/>}/>
             <Route path='/signup' render={() => <Signup/>}/>
             <Route path='/login' render={() => <Login/>}/>
