@@ -29,10 +29,10 @@ namespace csharp_backend.Controllers
             }
             return Ok(_context.Jobs
             // .Include(j => j.contact_id)
-            .Include("Contact") //Table Name?
-            .Include("Site")
+                                    .Include("Contact") //Table Name?
+                                    .Include("Site")
                                 //    .Include(j => j.site_id)
-                                   .ToList());
+                                    .ToList());
         }
 
         // GET api/values/5
@@ -40,7 +40,7 @@ namespace csharp_backend.Controllers
         public IActionResult Get(int id)
         {
             Job job = _context.Jobs.SingleOrDefault(j => j.job_id == id);
-            if(_context == null)
+            if(job == null)
             {
                 return NotFound();
             }
@@ -57,7 +57,10 @@ namespace csharp_backend.Controllers
             }
             _context.Jobs.Add(job);
             _context.SaveChanges();
-            return Ok(_context.Jobs.Where(j => j.job_id == job.job_id).SingleOrDefault());
+            return Ok(_context.Jobs.Where(j => j.job_id == job.job_id)
+                                    .Include("Contact")
+                                    .Include("Site")
+                                    .SingleOrDefault());
         }
 
         // PUT api/values/5
@@ -70,14 +73,20 @@ namespace csharp_backend.Controllers
             }
             _context.Jobs.Update(job);
             _context.SaveChanges();
-            return Ok(job);
+            return Ok(_context.Jobs.Where(j => j.job_id == job.job_id)
+                                    .Include("Contact")
+                                    .Include("Site")
+                                    .SingleOrDefault());
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Job job = _context.Jobs.Find(id);
+            Job job = _context.Jobs.Where(j => j.job_id == id)
+                                    .Include("Contact")
+                                    .Include("Site")
+                                    .SingleOrDefault();
             if(job == null)
             {
                 return NotFound();
