@@ -64,74 +64,84 @@ class AddJob extends Component {
         let finalJob = { ...newJob, contact_id, site_id }
         this.props.addJob(finalJob);
         this.setState({
-            submitClicked:true
+            submitClicked: true
         })
 
     }
-    
+
     render() {
         return (
             <div>
-            { this.state.submitClicked ? <Redirect to='/dashboard'/>
-            :
-            <div>
-            <Navbar title="Add a Job"/>
-                <div style ={{margin: "20px"}}>
-                <div className="form-group row">
-                    <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
-                    <div className="col-10">
-                        <input className="form-control" type="text" value={this.state.position} onChange={this.onPositionChange} id="example-text-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-search-input" className="col-2 col-form-label">Company</label>
-                    <div className="col-10">
-                        <input className="form-control" type="search" value={this.state.company} onChange={this.onCompanyChange} id="example-search-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-email-input" className="col-2 col-form-label">Salary</label>
-                    <div className="col-10">
-                        <input className="form-control" type="text" value={this.state.salary} onChange={this.onSalaryChange} id="example-email-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-tel-input" className="col-2 col-form-label">Contact</label>
-                    <div className="col-10">
-                        <input className="form-control" type="tel" value={this.state.contact} onChange={this.onContactChange} id="example-tel-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-url-input" className="col-2 col-form-label">Url</label>
-                    <div className="col-10">
-                        <input className="form-control" type="url" value={this.state.url} onChange={this.onUrlChange} id="example-url-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-password-input" className="col-2 col-form-label">Site</label>
-                    <div className="col-10">
-                        <input className="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="example-number-input" className="col-2 col-form-label">Notes</label>
-                    <div className="col-10">
-                        <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
-                    </div>
-                </div>
-                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button>
-                </div>
-                </div>
+                {this.state.submitClicked ? <Redirect to='/dashboard' /> :
+                    this.props.authorized ?
 
-            }
+                        <div>
+                            <Navbar title="Add a Job" />
+                            <div style={{ margin: "20px" }}>
+                                <div className="form-group row">
+                                    <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="text" value={this.state.position} onChange={this.onPositionChange} id="example-text-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-search-input" className="col-2 col-form-label">Company</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="search" value={this.state.company} onChange={this.onCompanyChange} id="example-search-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-email-input" className="col-2 col-form-label">Salary</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="text" value={this.state.salary} onChange={this.onSalaryChange} id="example-email-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-tel-input" className="col-2 col-form-label">Contact</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="tel" value={this.state.contact} onChange={this.onContactChange} id="example-tel-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-url-input" className="col-2 col-form-label">Url</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="url" value={this.state.url} onChange={this.onUrlChange} id="example-url-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-password-input" className="col-2 col-form-label">Site</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="example-number-input" className="col-2 col-form-label">Notes</label>
+                                    <div className="col-10">
+                                        <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
+                                    </div>
+                                </div>
+                                <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button>
+                            </div>
+                        </div>
+                        :
+                        <div>
+            <Navbar title="Job Tracker"/>
+            <h1>YOU ARE NOT AUTHORIZED.PLEASE LOG IN.</h1>
             </div>
-            
+            }
+
+            </div>
+
         );
     }
 }
 
 const mapPropsToDispatch = dispatch => ({
-    addJob: (job) => { dispatch(addJob(job))}
+    addJob: (job) => { dispatch(addJob(job)) }
 });
 
-export default connect(null, mapPropsToDispatch)(AddJob);
+const mapStateToProps = state => ({
+    authorized: state.authorized,
+})
+
+export default connect(mapStateToProps, mapPropsToDispatch)(AddJob);
