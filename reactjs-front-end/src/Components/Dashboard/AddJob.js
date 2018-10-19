@@ -70,9 +70,10 @@ class AddJob extends Component {
     onSubmitClicked = () => {
         let contact_id = Number(this.state.contact);
         let site_id = Number(this.state.site);
+        let status_id = Number(this.state.status);
         let { submitClicked, contact, site, ...newJob } = this.state
         let finalJob = { ...newJob, contact_id, site_id }
-        this.props.addJob(finalJob, this.state.status);
+        this.props.addJob(finalJob, status_id);
         this.setState({
             submitClicked: true
         })

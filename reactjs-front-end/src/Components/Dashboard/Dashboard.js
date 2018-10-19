@@ -95,7 +95,7 @@ class Dashboard extends Component {
                         <th>Contact</th>
                         <th>Url</th>
                         <th>Site</th>
-                        <th>Status</th>
+                        {/* <th>Status</th> */}
                         <th>Notes</th>
                     </tr>
                 </thead>
@@ -103,6 +103,7 @@ class Dashboard extends Component {
                     {/* type: array< object { email, username, password } > */}
                     { this.props.jobs.map((item, index) => {
                         let jobStatusHistory = this.props.allStatusHistory.filter(x => x.job_id === item.job_id)
+                        console.log("Job status history: ", jobStatusHistory);
                         return (
 
                             <tr key={index}>
@@ -113,7 +114,7 @@ class Dashboard extends Component {
                                 <td onClick={() => this._contactClicked(item.contact.contact_id)}>{item.contact.name}</td>
                                 <td>{item.url}</td>
                                 <td>{item.site.name}</td>
-                                <td>{jobStatusHistory && jobStatusHistory.pop().statusType.status_type}</td>
+                                {/* <td>{jobStatusHistory && jobStatusHistory[jobStatusHistory.length-1].statusType.status_type}</td> */}
                                 <td>{item.notes}</td>
                                 <td><button className="btn btn-warning" onClick={() => { this._editJob(item.job_id, index) }} >Edit</button></td>
                                 <td><button className="btn btn-info" onClick={() => { this._historyClicked(item.job_id) }} >History</button></td>

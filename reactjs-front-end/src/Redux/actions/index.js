@@ -38,7 +38,7 @@ export const addJob = (job, status) => dispatch => {
             console.log("Status history body", statusHistoryBody);
             axios.post('http://localhost:5000/api/statushistory', statusHistoryBody)
                 .then(res => {
-
+                    
                 })
         })
         .catch(err => {

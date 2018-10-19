@@ -92,7 +92,7 @@ const rootReducer = (state = initialState, action) => {
         case "ALL_STATUS_HISTORY":
         return {
           ...state,
-          allStatusHistory: action.payload
+          allStatusHistory: [...state.allStatusHistory, action.payload]
         }
     default:
       return state;
