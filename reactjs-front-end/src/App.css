@@ -173,10 +173,10 @@ border-color: #1CA347;
     /* The hero image */
     .hero-image {
         /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/51/77/1357922b6712244.jpg");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../src/img/hero-banner2.jpg");
     
         /* Set a specific height */
-        height: 50%;
+        height: 100%;
     
         /* Position and center the image to scale nicely on all screens */
         background-position: center;
@@ -192,5 +192,5 @@ border-color: #1CA347;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white;
+        color: black;
     }
