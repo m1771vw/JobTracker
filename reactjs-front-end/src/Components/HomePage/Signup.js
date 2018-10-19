@@ -67,7 +67,7 @@ class Signup extends Component {
                                         <Link to='/login' id="login-form-link">Login</Link>
                                     </div>
                                     <div className="col-xs-6">
-                                        <a href="#" className="active" id="register-form-link" onClick={this.registerClicked}>Register</a>
+                                        <a href="#" className="active" id="register-form-link" onClick={this.registerClick}>Register</a>
                                     </div>
                                 </div>
                                 <hr/>
