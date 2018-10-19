@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Navbar from '../Navbar';
 
 class AddJob extends Component {
     state = {
@@ -56,23 +56,8 @@ class AddJob extends Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Add a Job</a>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profile</a>
-                            </li>
+            <Navbar title="Add a Job"/>
 
-                        </ul>
-                    </div>
-                </nav>
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Position</label>
                     <div class="col-10">
