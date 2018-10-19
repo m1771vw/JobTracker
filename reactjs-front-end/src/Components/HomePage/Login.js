@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HomeNavbar from '../HomeNavbar';
 
 
 class Login extends Component {
@@ -7,7 +8,10 @@ class Login extends Component {
 
     render() {
         return (
+            <div>
+            <HomeNavbar title="Log In"/>
             <div class="signup-container">
+            
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-login">
@@ -60,6 +64,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         );
     }

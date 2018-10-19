@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import HomeNavbar from '../HomeNavbar';
 
 
 class Signup extends Component {
     render() {
         return (
+            <div>
+            <HomeNavbar title="Sign Up"/>
             <div class="signup-container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
@@ -50,6 +53,7 @@ class Signup extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         );
     }
