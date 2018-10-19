@@ -5,70 +5,82 @@ class Signup extends Component {
 
     render() {
         return (
-            <div class="container-fluid">
-            <section class="container">
-                <div class="container-page">				
-                    <div class="col-md-6">
-                        <h3 class="dark-grey">Registration</h3>
-                        
-                        <div class="form-group col-lg-12">
-                            <label>Username</label>
-                            <input type="" name="" class="form-control" id="" value=""/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-login">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a href="#" class="active" id="login-form-link">Login</a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="#" id="register-form-link">Register</a>
+                                    </div>
+                                </div>
+                                <hr/>
+					        </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                        <form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style={{display: "block"}} >
+                                            <div class="form-group">
+                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" />
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <input type="checkbox" tabindex="3" class="" name="remember" id="remember" />
+                                                <label for="remember"> Remember Me</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-sm-offset-3">
+                                                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="text-center">
+                                                            <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+								        </form>
+                                        <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style={{display: "none"}}>
+                                            <div class="form-group">
+                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-sm-offset-3">
+                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Password</label>
-                            <input type="password" name="" class="form-control" id="" value=""/>
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Repeat Password</label>
-                            <input type="password" name="" class="form-control" id="" value=""/>
-                        </div>
-                                        
-                        <div class="form-group col-lg-6">
-                            <label>Email Address</label>
-                            <input type="" name="" class="form-control" id="" value=""/>
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Repeat Email Address</label>
-                            <input type="" name="" class="form-control" id="" value=""/>
-                        </div>			
-                        
-                        <div class="col-sm-6">
-                            <input type="checkbox" class="checkbox" />Sigh up for our newsletter
-                        </div>
-        
-                        <div class="col-sm-6">
-                            <input type="checkbox" class="checkbox" />Send notifications to this email
-                        </div>				
-                    
-                    </div>
-                
-                    <div class="col-md-6">
-                        <h3 class="dark-grey">Terms and Conditions</h3>
-                        <p>
-                            By clicking on "Register" you agree to The Company's' Terms and Conditions
-                        </p>
-                        <p>
-                            While rare, prices are subject to change based on exchange rate fluctuations - 
-                            should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
-                        </p>
-                        <p>
-                            Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
-                        </p>
-                        <p>
-                            Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
-                        </p>
-                        
-                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
         );
     }
 }
 
-export default Sign;
+export default Signup;
