@@ -58,46 +58,46 @@ class AddJob extends Component {
             <div>
             <Navbar title="Add a Job"/>
 
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">Position</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value={this.state.position} onChange={this.onPositionChange} id="example-text-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
+                    <div className="col-10">
+                        <input className="form-control" type="text" value={this.state.position} onChange={this.onPositionChange} id="example-text-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Company</label>
-                    <div class="col-10">
-                        <input class="form-control" type="search" value={this.state.company} onChange={this.onCompanyChange} id="example-search-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-search-input" className="col-2 col-form-label">Company</label>
+                    <div className="col-10">
+                        <input className="form-control" type="search" value={this.state.company} onChange={this.onCompanyChange} id="example-search-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-email-input" class="col-2 col-form-label">Salary</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value={this.state.salary} onChange={this.onSalaryChange} id="example-email-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-email-input" className="col-2 col-form-label">Salary</label>
+                    <div className="col-10">
+                        <input className="form-control" type="text" value={this.state.salary} onChange={this.onSalaryChange} id="example-email-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-tel-input" class="col-2 col-form-label">Contact</label>
-                    <div class="col-10">
-                        <input class="form-control" type="tel" value={this.state.contact} onChange={this.onContactChange} id="example-tel-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-tel-input" className="col-2 col-form-label">Contact</label>
+                    <div className="col-10">
+                        <input className="form-control" type="tel" value={this.state.contact} onChange={this.onContactChange} id="example-tel-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-url-input" class="col-2 col-form-label">Url</label>
-                    <div class="col-10">
-                        <input class="form-control" type="url" value={this.state.url} onChange={this.onUrlChange} id="example-url-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-url-input" className="col-2 col-form-label">Url</label>
+                    <div className="col-10">
+                        <input className="form-control" type="url" value={this.state.url} onChange={this.onUrlChange} id="example-url-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-password-input" class="col-2 col-form-label">Site</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-password-input" className="col-2 col-form-label">Site</label>
+                    <div className="col-10">
+                        <input className="form-control" type="text" value={this.state.site} onChange={this.onSiteChange} id="example-password-input" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-number-input" class="col-2 col-form-label">Notes</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
+                <div className="form-group row">
+                    <label htmlFor="example-number-input" className="col-2 col-form-label">Notes</label>
+                    <div className="col-10">
+                        <input className="form-control" type="text" value={this.state.notes} onChange={this.onNotesChange} id="example-number-input" />
                     </div>
                 </div>
                 <button className="btn btn-danger"  >Submit</button></div>
