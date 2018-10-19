@@ -67,7 +67,7 @@ class AddJob extends Component {
         return (
             <div>
             <Navbar title="Add a Job"/>
-
+                <div style ={{margin: "20px"}}>
                 <div className="form-group row">
                     <label htmlFor="example-text-input" className="col-2 col-form-label">Position</label>
                     <div className="col-10">
@@ -111,6 +111,8 @@ class AddJob extends Component {
                     </div>
                 </div>
                 <button className="btn btn-danger" onClick={this.onSubmitClicked} >Submit</button></div>
+                </div>
+
         );
     }
 }
