@@ -165,7 +165,7 @@ You can press the **Add Job** tab to add a new job.
 * [Redux](https://redux.js.org/)
 * [.NET Core](https://www.microsoft.com/net/download)
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
-* [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+* [bcrypt.net-core](https://github.com/neoKushan/BCrypt.Net-Core)
 * [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 * [PostgreSQL](https://www.postgresql.org/) 
 
